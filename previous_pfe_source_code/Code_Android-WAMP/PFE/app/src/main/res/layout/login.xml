@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/White"
+    android:padding="20dp" >
+
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_ehpad"
+        android:layout_marginTop="68dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/Logo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:id="@+id/txtLogin"
+            android:singleLine="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_login_user"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="Identifiant"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="@color/Grey"
+            android:textColorHint="@color/Grey"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/Grey" />
+
+        <EditText
+            android:id="@+id/txtPasswordd"
+            android:singleLine="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_login_password"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="Mot de passe"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/Grey"
+            android:textColorHint="@color/Grey"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/Grey" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="8dp" >
+
+            <CheckBox
+                android:id="@+id/checkRemember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Se souvenir de moi"
+                android:textColor="@color/Grey"
+                android:textSize="14sp"
+                android:buttonTint="@color/Grey"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@color/colorPrimary"
+            android:padding="3dp"
+            android:text="Connexion"
+            android:textColor="@color/White"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

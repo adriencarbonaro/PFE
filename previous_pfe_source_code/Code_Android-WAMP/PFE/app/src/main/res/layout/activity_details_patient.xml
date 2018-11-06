@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/refreshBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:text="TARE"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_toEndOf="@+id/syncButton" />
+
+    <Button
+        android:id="@+id/syncButton"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_alignEnd="@+id/patientName"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/refreshBtn"
+        android:adjustViewBounds="false"
+        android:background="@color/colorPrimary"
+        android:text="START"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/colorPrimary"
+            app:srcCompat="@drawable/ic_arrow_left" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
+        android:layout_below="@+id/appbar"
+        android:id="@+id/nestedScrollView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.ece.pfe.views.DetailsPatientActivity">
+
+            <ImageView
+                android:id="@+id/picture"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_people" />
+
+            <TextView
+                android:id="@+id/patientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="14dp"
+                android:layout_toEndOf="@+id/picture"
+                android:layout_weight="1"
+                android:text="Name"
+                android:textSize="16sp" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graph"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/picture"
+                android:layout_marginTop="25dp" />
+
+            <TextView
+                android:id="@+id/patientRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/patientName"
+                android:layout_marginTop="23dp"
+                android:layout_toEndOf="@+id/picture"
+                android:text="Number"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lastWeightTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LastWeight"
+                android:textColor="@color/Blue"
+                android:textSize="18sp"
+                android:layout_alignBottom="@+id/patientRoom"
+                android:layout_toStartOf="@+id/lastWeight"
+                android:layout_marginEnd="22dp" />
+
+            <TextView
+                android:id="@+id/lastWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/patientRoom"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="43dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>
