@@ -31,8 +31,8 @@ $response = array();
 require_once __DIR__ . '/db_connect.php';
  
 // connecting to db
-define('DB_USER', "root"); // db user
-define('DB_PASSWORD', ""); // db password (mention your db password here)
+define('DB_USER', "phpmyadmin"); // db user
+define('DB_PASSWORD', "root"); // db password (mention your db password here)
 define('DB_DATABASE', "ehpad"); // database name
 define('DB_SERVER', "localhost"); // db server
 
