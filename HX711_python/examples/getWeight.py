@@ -1,3 +1,5 @@
+# TODO: find out the functioning of HX711() and get_weight
+
 from hx711 import HX711
 import time
 
