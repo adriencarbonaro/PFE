@@ -18,7 +18,7 @@ try:
     
     # measure tare and save the value as offset for current channel
     # and gain selected.
-    result = hx.zero(times=10)
+    # result = hx.zero(times=10)
     hx.set_offset(-14050)
     while(cpt < 1000):
         raw = hx.get_raw_data_mean()
