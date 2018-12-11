@@ -22,10 +22,17 @@ try:
     # measure tare and save the value as offset for current channel
     # and gain selected.
     result = hx.zero(times=10)
+    print("zero value : " + str(hx.get_data_mean(10)))
+
+    # Calibrate using a known 50g weight
+    input('Put 50g on the scale to calibrate it the press Enter')
+    weight_50grams = hx.get_data_mean(10)
+    print("50g value  : " + str(weight_50grams))
+    hx.set_scale_ratio(scale_ratio=weight_50grams / 50.0)
 
     while(1):
-        wei = hx.get_weight_mean(10)
-        print(str(wei) + " g")
+        val = hx.get_weight_mean(10)
+        print(str(val) + " g")
         sleep(1)
 
 except (KeyboardInterrupt, SystemExit):
