@@ -12,7 +12,7 @@ from   time     import sleep
 # os.path.dirname()         = ~/PFE/
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
+from HX_mine.HX711_Python3.hx711 import HX711    # import the class HX711
 
 try:
     # Create an object hx which represents your real hx711 chip
@@ -30,14 +30,14 @@ try:
         print('not ready')
 
     # Measure tare and save the value as offset for current channel and gain selected.
-    result = hx.zero(times=10)
+    result = hx.zero(readings=10)
     print("zero value : " + str(hx.get_data_mean(10)))
 
     # Calibrate using a known 50g weight.
-    input('Put 50g on the scale to calibrate it the press Enter')
-    weight_50grams = hx.get_data_mean(10)
-    print("50g value  : " + str(weight_50grams))
-    hx.set_scale_ratio(scale_ratio=weight_50grams / 50.0)
+    input('Put calibrating weight (60g) on the scale the press Enter')
+    weight_60grams = hx.get_data_mean(10)
+    print("60g value  : " + str(weight_60grams))
+    hx.set_scale_ratio(scale_ratio=weight_60grams / 60.0)
 
     # Read and print the current weight put on the scale.
     while(1):
