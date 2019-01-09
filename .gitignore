@@ -1,8 +1,6 @@
-HX_mine
-HX
-
 .gitmodules
 
 Ehpad.sql
+swap_file.swp
 
 __pycache__
