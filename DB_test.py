@@ -45,10 +45,10 @@ def sendDB(id_room, weight, timestamp):
 def main():
     hx = hx_load()
 
-    while True:
-        val = hx.get_weight_mean(10)
-        timestamp = datetime.datetime.now()
-        sendDB(id_room, weight, timestamp)
+    weight = hx.get_weight_mean(10)
+    timestamp = datetime.datetime.now()
+    id_room = 1
+    sendDB(id_room, weight, timestamp)
 
 # -- MAIN EXECUTION ------------------------------------------------------------
 if __name__ == "__main__":
