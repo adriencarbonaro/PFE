@@ -43,7 +43,7 @@ def calibrate():
 
     # Measure tare and save the value as offset for current channel and gain selected.
     result = hx.zero(readings=10)
-    print("zero value : " + str(hx.get_data_mean(10)))
+    # print("zero value : " + str(hx.get_data_mean(10)))
 
     # Calibrate using a known 50g weight.
     input('Put calibrating weight (60g) on the scale the press Enter')
@@ -53,13 +53,14 @@ def calibrate():
     
     # This is how you can save the ratio and offset in order to load it later.
     # If Raspberry Pi unexpectedly powers down, load the settings.
-    print('Saving the HX711 state to swap file on persistant memory')
+    # print('Saving the HX711 state to swap file on persistant memory')
     with open(swap_file_name, 'wb') as swap_file:
         pickle.dump(hx, swap_file)
         swap_file.flush()
         os.fsync(swap_file.fileno())
         # you have to flush, fsynch and close the file all the time.
         # This will write the file to the drive. It is slow but safe.
+    input('Calibration OK (press Enter)')
     return hx
 
 if __name__ == '__main__':
