@@ -1,7 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
-# ---------------  LIBRAIRIES  --------------------------------------- 
+# -- IMPORTS ------------------------------------------------------------------- 
+
 import sys                      # Librairie standard fonctions systeme
 import os
 import time                     # Librairie standard time
@@ -14,17 +15,18 @@ import RPi.GPIO as GPIO         # Librairie de gestion des E/S de la Raspberry
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from HX.HX711_Python3.hx711     import HX711
+from HX711.HX711_Python3.hx711  import HX711
 from calibration                import calibrate
+from hx_loader                  import hx_load
 
-# -- DB variables ----------------------------------------------------------------
+# -- DB VARIABLES --------------------------------------------------------------
 
 HOST    =  "localhost"
 USER    =  "adrien"
 PASSWD  =  "adrien"
 DB      =  "EHPAD"
 
-# -- Fonctions -------------------------------------------------------------------
+# -- FUNCTIONS -----------------------------------------------------------------
 
 def sendDB(id_room, weight, timestamp):
     """Save measures to EHPAD DB with a timestamp and the room ID"""
@@ -38,23 +40,30 @@ def sendDB(id_room, weight, timestamp):
     cursor.execute(add_mesure, data_mesure)
     cnx.commit()
 
-# -- Main function ------------------------------------------------------------
+# -- MAIN FUNCTION -------------------------------------------------------------
 
 def main():
-    hx = calibrate()
+    hx = hx_load()
 
-    print("Main loop")
     while True:
         val = hx.get_weight_mean(10)
         timestamp = datetime.datetime.now()
         sendDB(id_room, weight, timestamp)
 
-# -- Main execution ------------------------------------------------------------
+# -- MAIN EXECUTION ------------------------------------------------------------
 if __name__ == "__main__":
     try:
         main()
-    except(KeyboardInterrupt, SystemExit):
-        print("\nEnd of execution") 
+
+    except (KeyboardInterrupt, SystemExit):
+        print('\nDB_test: Keyboard Interruption: stopping program')
+
+    except (RuntimeError):
+        print("\nDB_test: Runtime Error during execution")
+
+    except Exception as e:
+        print("\nDB_test: Other exception: " + e)
+
     finally:
         GPIO.cleanup()
         sys.exit()
