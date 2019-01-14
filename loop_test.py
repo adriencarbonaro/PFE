@@ -7,6 +7,9 @@ from   time         import sleep
 import pickle
 from   calibration  import calibrate
 from   hx_loader    import hx_load
+from   firebase     import firebase_connect
+from   firebase     import send_notification
+
 # Add HX711 directory to sys.path.
 # Allows to find module hx711.
 #
