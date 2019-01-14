@@ -9,6 +9,7 @@ from   calibration      import calibrate
 from   hx_loader        import hx_load
 from   firebase_utils   import firebase_connect
 from   firebase_utils   import send_notification
+from   firebase_utils   import send_notification_2
 
 # Add HX711 directory to sys.path.
 # Allows to find module hx711.
@@ -29,7 +30,7 @@ try:
     val = hx.get_weight_mean(10)
     print(str(val) + " g")
     firebase_connect()
-    send_notification('Weight', str(val) + ' g')
+    send_notification()
 
 except (KeyboardInterrupt, SystemExit):
     print('\ntest: Keyboard Interruption: stopping program')

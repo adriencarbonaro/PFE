@@ -31,5 +31,18 @@ def send_notification(notif_title='default_title', notif_body='default_body'):
     )
 
     response = messaging.send(message)
-    
+    print('Successfully sent message:', response)
+
+def send_notification_color(notif_color="00ff00"):
+    message = messaging.Message(
+        android=messaging.AndroidConfig(
+            notification=messaging.AndroidNotification(
+                title='Test',
+                body='Test',
+                color=notif_color
+            ),
+        ),
+        token=registration_token
+    )
+    response = messaging.send(message)
     print('Successfully sent message:', response)
