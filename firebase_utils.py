@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import messaging
+import  firebase_admin
+from    firebase_admin import credentials
+from    firebase_admin import messaging
 
 # This registration token comes from the client FCM SDKs.
 registration_token = 'dTahG-Pwjf4:APA91bFMd7bSWwO0EBHrOl3nunkWNqrITzBUTY-FUOicWWouEO5BuvKSz-Y2haRG5GazGYCp6YPAA6ucs2RmBhW3WEPNlX2gwCbjBemghGD-SLpXfdly-yCFWPU-ObuXzBA21--xjeyC'
+# registration_token = 'fqtRUhSOqUI:APA91bGSfdTkXsmiPlE1EGS99jLJZSj-IZMWrAX7oe4V3eCsjUZOwE0LryToG5-bqU2ECB7RUqL17xU_EwjhypvTE1Or679wzMG8W32EPqNB56SO0GpO7P4ABfdczTngxzkrFyi5BqIn'
 
 ##
 # @brief    Connect to Firebase Admin API.
