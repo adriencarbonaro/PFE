@@ -18,6 +18,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from HX711.HX711_Python3.hx711  import HX711
 from calibration                import calibrate
 from hx_loader                  import hx_load
+from firebase_utils             import firebase_connect
+from firebase_utils             import send_notification
 
 # -- DB VARIABLES --------------------------------------------------------------
 
@@ -49,6 +51,8 @@ def main():
     timestamp = datetime.datetime.now()
     id_room = 1
     sendDB(id_room, weight, timestamp)
+    firebase_connect()
+    send_notification("Weight", str(weight))
 
 # -- MAIN EXECUTION ------------------------------------------------------------
 if __name__ == "__main__":
