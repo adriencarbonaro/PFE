@@ -9,7 +9,7 @@ from   calibration      import calibrate
 from   hx_loader        import hx_load
 from   firebase_utils   import firebase_connect
 from   firebase_utils   import send_notification
-from   firebase_utils   import send_notification_2
+from   firebase_utils   import send_notification_color
 
 # Add HX711 directory to sys.path.
 # Allows to find module hx711.
