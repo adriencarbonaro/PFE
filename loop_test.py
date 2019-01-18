@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# -- IMPORTS ------------------------------------------------------------------- 
+
 import sys
 import os
 import RPi.GPIO     as     GPIO     # import GPIO
@@ -7,12 +9,10 @@ from   time         import sleep
 import pickle
 from   calibration  import calibrate
 from   hx_loader    import hx_load
-from   firebase     import firebase_connect
-from   firebase     import send_notification
+from   firebase.firebase_utils     import firebase_connect
+from   firebase.firebase_utils     import send_notification
 
-# Add HX711 directory to sys.path.
-# Allows to find module hx711.
-#
+# Add current directory to $PYTHONPATH
 # os.path.abspath(__file__) = ~/PFE/example_calibration.py
 # os.path.dirname()         = ~/PFE/
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))

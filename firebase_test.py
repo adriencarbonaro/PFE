@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# -- IMPORTS ------------------------------------------------------------------- 
+
 import sys
 import os
 import RPi.GPIO     as     GPIO     # import GPIO
@@ -7,18 +9,16 @@ from   time         import sleep
 import pickle
 from   calibration      import calibrate
 from   hx_loader        import hx_load
-from   firebase_utils   import firebase_connect
-from   firebase_utils   import send_notification
-from   firebase_utils   import send_notification_color
 
-# Add HX711 directory to sys.path.
-# Allows to find module hx711.
-#
+# Add current directory to $PYTHONPATH
 # os.path.abspath(__file__) = ~/PFE/example_calibration.py
 # os.path.dirname()         = ~/PFE/
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
+from firebase.firebase_utils   import firebase_connect
+from firebase.firebase_utils   import send_notification
+from firebase.firebase_utils   import send_notification_color
 
 # -- HX OBJECT LOADING ---------------------------------------------------------
 try:

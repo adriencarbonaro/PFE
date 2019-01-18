@@ -1,5 +1,4 @@
-#! /usr/bin/env python3
-# coding: utf-8
+#!/usr/bin/env python3
 
 # -- IMPORTS ------------------------------------------------------------------- 
 
@@ -13,6 +12,9 @@ from mysql.connector import errorcode
 
 import RPi.GPIO as GPIO         # Librairie de gestion des E/S de la Raspberry
 
+# Add current directory to $PYTHONPATH
+# os.path.abspath(__file__) = ~/PFE/example_calibration.py
+# os.path.dirname()         = ~/PFE/
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from HX711.HX711_Python3.hx711  import HX711

@@ -8,9 +8,7 @@ import RPi.GPIO as     GPIO     # import GPIO
 from   time     import sleep
 import pickle                   # Saving the hx object
 
-# Add HX711 directory to sys.path.
-# Allows to find module hx711.
-#
+# Add current directory to $PYTHONPATH
 # os.path.abspath(__file__) = ~/PFE/example_calibration.py
 # os.path.dirname()         = ~/PFE/
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
