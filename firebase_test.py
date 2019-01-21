@@ -19,6 +19,7 @@ from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
 from firebase.firebase_utils   import firebase_connect
 from firebase.firebase_utils   import send_notification
 from firebase.firebase_utils   import send_notification_color
+from firebase.firebase_db_utils import add_weight
 
 # -- HX OBJECT LOADING ---------------------------------------------------------
 try:
@@ -29,8 +30,10 @@ try:
     GPIO.setmode(GPIO.BCM)
     val = hx.get_weight_mean(10)
     print(str(val) + " g")
-    firebase_connect()
+    app = firebase_connect()
     send_notification()
+    add_weight(2, 0, "22012019", val)
+    
 
 except (KeyboardInterrupt, SystemExit):
     print('\ntest: Keyboard Interruption: stopping program')
