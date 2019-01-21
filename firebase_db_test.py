@@ -16,7 +16,7 @@ from   firebase_admin import initialize_app
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from firebase.firebase_utils    import firebase_connect
-from firebase.firebase_db_utils import update_weight
+from firebase.firebase_db_utils import add_weight
 
 # -- MAIN EXECUTION ------------------------------------------------------------
 
@@ -24,6 +24,7 @@ from firebase.firebase_db_utils import update_weight
 app = firebase_connect()
 
 # As an admin, the app has access to read and write all data, regradless of Security Rules
+general_db   = db.reference("/")
 weights_db   = db.reference("/weights")
 room_db      = db.reference("/room_patient")
 patients_db  = db.reference("/patients")
