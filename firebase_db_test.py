@@ -20,22 +20,16 @@ from firebase.firebase_db_utils import update_weight
 
 # -- MAIN EXECUTION ------------------------------------------------------------
 
-with open('firebase/firebase_db_options.json') as f:
-    data = json.load(f)
-
-cred     =  credentials.Certificate('firebase/firebase_cred.json')
-options  =  data
-
 # Initialize the app with a service account, granting admin privileges
-initialize_app(cred, options)
+app = firebase_connect()
 
 # As an admin, the app has access to read and write all data, regradless of Security Rules
-ref = db.reference("/patients")
+weights_db   = db.reference("/weights")
+room_db      = db.reference("/room_patient")
+patients_db  = db.reference("/patients")
 
-update_weight(ref, weight=79)
+weights_t   = weights_db.get()
+room_t      = room_db.get()
+patients_t  = patients_db.get()
 
-patient_table = ref.get()
 
-for i in patient_table:
-    log(patient_table[i]["first_name"] + " " + patient_table[i]["name"] + " :", str(patient_table[i]["weight"]) + " kg")
-    print()

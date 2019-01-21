@@ -17,6 +17,5 @@ from   firebase.firebase_utils   import send_notification_color
 # -- MAIN EXECUTION ------------------------------------------------------------
 
 firebase_connect()
-send_notification()
-send_notification_color("#ff0000")
+send_notification_color("#FF0000")
 

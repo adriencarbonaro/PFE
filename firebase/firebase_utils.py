@@ -18,8 +18,13 @@ registration_token = 'dTahG-Pwjf4:APA91bFMd7bSWwO0EBHrOl3nunkWNqrITzBUTY-FUOicWW
 # @brief    Connect to Firebase Admin API.
 #           Necessary to send notifications.
 def firebase_connect():
-    cred = credentials.Certificate('./firebase_cred.json')
-    default_app = firebase_admin.initialize_app(cred)
+    with open('firebase/firebase_db_options.json') as f:
+        options = json.load(f)
+
+    cred = credentials.Certificate('firebase/firebase_cred.json')
+    app  = initialize_app(cred, options)
+
+    return app
 
 ##
 # @brief        Send a Notification.
@@ -44,13 +49,14 @@ def send_notification(notif_title='default_title', notif_body='default_body'):
 #
 # @param title  The notification headline.
 # @param body   The notification message.
-def send_notification_color(notif_title='default_title', notif_body='default_body', notif_color="00ff00"):
+def send_notification_color(notif_title='default_title', notif_body='default_body', notif_color="#FF0000"):
     message = messaging.Message(
         android=messaging.AndroidConfig(
             notification=messaging.AndroidNotification(
                 title=notif_title,
                 body=notif_body,
-                color=notif_color
+                color=notif_color,
+                click_action="OPEN_ACTIVITY_1"
             ),
         ),
         token=registration_token
