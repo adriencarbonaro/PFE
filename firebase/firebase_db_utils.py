@@ -8,8 +8,10 @@ from    firebase_admin import db
 
 # -- API FUNCTIONS -------------------------------------------------------------
 
-def add_weight(weight_db, id_weight, id_card, timestamp_weight, value):
-    weight_db.set({
+def add_weight(id_weight, id_card, timestamp_weight, value):
+    weights_db = db.reference("/weights")
+
+    weights_db.push({
         "id_weight": id_weight,
         "id_card": id_card,
         "timestamp_weight": timestamp_weight,
