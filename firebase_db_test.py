@@ -33,4 +33,7 @@ weights_t   = weights_db.get()
 room_t      = room_db.get()
 patients_t  = patients_db.get()
 
+log("WEIGHT: ", "READING WEIGHT TABLE")
 
+for i in weights_t:
+    print(weights_t[i])
