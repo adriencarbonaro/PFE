@@ -17,3 +17,11 @@ def add_weight(id_weight, id_card, timestamp_weight, value):
         "timestamp_weight": timestamp_weight,
         "value": value
     })
+
+def get_weights():
+    weights_db = db.reference("/weights")
+
+    weights_t = weights_db.get()
+
+    for i in weights_t:
+        print(weights_t[i])
