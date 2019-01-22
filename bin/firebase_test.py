@@ -7,19 +7,16 @@ import os
 import decimal
 import RPi.GPIO     as     GPIO     # import GPIO
 from   time         import sleep
-import pickle
-from   calibration      import calibrate
-from   hx_loader        import hx_load
 
 # Add current directory to $PYTHONPATH
 # os.path.abspath(__file__) = ~/PFE/example_calibration.py
 # os.path.dirname()         = ~/PFE/
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
-from firebase.firebase_utils   import firebase_connect
-from firebase.firebase_utils   import send_notification
-from firebase.firebase_utils   import send_notification_color
+from calibration                import calibrate
+from hx_loader                  import hx_load
+from HX711.HX711_Python3.hx711  import HX711    # import the class HX711
+from firebase.firebase_utils    import firebase_connect
+from firebase.firebase_utils    import send_notification
+from firebase.firebase_utils    import send_notification_color
 from firebase.firebase_db_utils import add_weight
 
 # -- CONSTANTS -----------------------------------------------------------------

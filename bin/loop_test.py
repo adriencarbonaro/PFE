@@ -15,7 +15,7 @@ from   firebase.firebase_utils     import send_notification
 # Add current directory to $PYTHONPATH
 # os.path.abspath(__file__) = ~/PFE/example_calibration.py
 # os.path.dirname()         = ~/PFE/
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append("/home/pi/PFE/")
 
 from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
 
