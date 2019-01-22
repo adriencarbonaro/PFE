@@ -33,16 +33,19 @@ def firebase_connect():
 #
 # @param title  The notification headline.
 # @param body   The notification message.
-def send_notification(notif_title='default_title', notif_body='default_body'):
+def send_notification(notif_title='default_title', notif_body='default_body', notif_color='#00FFFF'):
     # See documentation on defining a message payload.
     message = messaging.Message(
-        notification=messaging.Notification(
-            title=notif_title,
-            body=notif_body,
+        android=messaging.AndroidConfig(
+            notification=messaging.AndroidNotification(
+                title=notif_title,
+                body=notif_body,
+                color=notif_color,
+                # click_action="OPEN_ACTIVITY_1"
+            ),
         ),
         token=registration_token
     )
-
     response = messaging.send(message)
     print('Successfully sent message:', response)
 
