@@ -8,6 +8,11 @@ from    firebase_admin import initialize_app
 from    firebase_admin import credentials
 from    firebase_admin import messaging
 
+# -- CONSTANTS -----------------------------------------------------------------
+
+CRED_FILE       = "/home/pi/PFE/firebase/firebase_cred.json"
+DB_OPTIONS_FILE = "/home/pi/PFE/firebase/firebase_db_options.json"
+
 # -- API TOKENS ----------------------------------------------------------------
 
 # This registration token comes from the client FCM SDKs.
@@ -20,10 +25,10 @@ registration_token = 'fqDqjh8MnLw:APA91bGQ-PVtnRPGij6PaHGq6BCq_F6Tq9C8mZJVzfiUpd
 # @brief    Connect to Firebase Admin API.
 #           Necessary to send notifications.
 def firebase_connect():
-    with open('firebase/firebase_db_options.json') as f:
+    with open(DB_OPTIONS_FILE) as f:
         options = json.load(f)
 
-    cred = credentials.Certificate('firebase/firebase_cred.json')
+    cred = credentials.Certificate(CRED_FILE)
     app  = initialize_app(cred, options)
 
     return app
