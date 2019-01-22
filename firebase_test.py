@@ -4,6 +4,7 @@
 
 import sys
 import os
+import decimal
 import RPi.GPIO     as     GPIO     # import GPIO
 from   time         import sleep
 import pickle
@@ -21,6 +22,10 @@ from firebase.firebase_utils   import send_notification
 from firebase.firebase_utils   import send_notification_color
 from firebase.firebase_db_utils import add_weight
 
+# -- CONSTANTS -----------------------------------------------------------------
+ROOM_NB      = 0
+WEIGHT_LIMIT = 3000.0
+
 # -- HX OBJECT LOADING ---------------------------------------------------------
 try:
     hx = hx_load()
@@ -28,11 +33,19 @@ try:
 # -- MAIN EXECUTION ------------------------------------------------------------
 
     GPIO.setmode(GPIO.BCM)
-    val = hx.get_weight_mean(10)
-    print(str(val) + " g")
+
+    val       = hx.get_weight_mean(10)
+    round_val = decimal.Decimal(val).quantize(decimal.Decimal('.01'), rounding = decimal.ROUND_DOWN)
+
+    print(str(round_val) + " g")
+    print(str(round_val / 1000) + " kg")
+
     app = firebase_connect()
-    send_notification()
-    add_weight(2, 0, "22012019", val)
+
+    if ( val < WEIGHT_LIMIT):
+        send_notification("Weight too low", str(round_val / 1000) + " kg (room " + str(ROOM_NB) + ")")
+
+    add_weight(2, ROOM_NB, "22012019", round_val / 1000)
     
 
 except (KeyboardInterrupt, SystemExit):
