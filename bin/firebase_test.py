@@ -2,11 +2,12 @@
 
 # -- IMPORTS ------------------------------------------------------------------- 
 
-import sys
-import os
-import decimal
-import RPi.GPIO     as     GPIO     # import GPIO
-from   time         import sleep
+import  sys
+import  os
+import  decimal
+import  RPi.GPIO    as     GPIO     # import GPIO
+from    time        import sleep
+from    datetime    import datetime
 
 # Add current directory to $PYTHONPATH
 # os.path.abspath(__file__) = ~/PFE/example_calibration.py
@@ -39,10 +40,10 @@ try:
 
     app = firebase_connect()
 
-    if ( val < WEIGHT_LIMIT):
+    if (val < WEIGHT_LIMIT):
         send_notification("Weight too low", str(round_val / 1000) + " kg (room " + str(ROOM_NB) + ")")
 
-    add_weight(2, ROOM_NB, "22012019", round_val / 1000)
+    add_weight(ROOM_NB, str(datetime.now()), round_val / 1000)
     
 
 except (KeyboardInterrupt, SystemExit):
