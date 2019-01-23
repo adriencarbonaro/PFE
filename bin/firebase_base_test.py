@@ -4,6 +4,7 @@
 
 import sys
 import os
+from   datetime import datetime
 
 # Add current directory to $PYTHONPATH
 # os.path.abspath(__file__) = ~/PFE/example_calibration.py
@@ -19,6 +20,11 @@ from   firebase.firebase_db_utils import get_weights
 # -- MAIN EXECUTION ------------------------------------------------------------
 
 app = firebase_connect()
-send_notification_color("#FF0000")
-#add_weight(4, 0, "22012019", 77)
-get_weights()
+# send_notification_color("#FF0000")
+add_weight(0, str(datetime.now()), 77)
+weights = get_weights()
+for i in weights:
+    print(weights[i])
+# get_weights("value")
+# get_weights("timestamp_weight")
+
