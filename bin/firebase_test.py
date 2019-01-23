@@ -33,6 +33,9 @@ try:
     GPIO.setmode(GPIO.BCM)
 
     val       = hx.get_weight_mean(10)
+    if (val < 0):
+        val = 0
+
     round_val = decimal.Decimal(val).quantize(decimal.Decimal('.01'), rounding = decimal.ROUND_DOWN)
 
     print(str(round_val) + " g")

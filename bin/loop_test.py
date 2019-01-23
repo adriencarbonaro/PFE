@@ -28,6 +28,9 @@ try:
     GPIO.setmode(GPIO.BCM)
     while(1):
         val = hx.get_weight_mean(10)
+        if (val < 0):
+            val = 0
+
         print(str(val) + " g")
         sleep(1)
 
