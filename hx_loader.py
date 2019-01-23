@@ -16,6 +16,10 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
 
+# -- CONSTANTS -----------------------------------------------------------------
+
+swap_file_name = '/home/pi/PFE/swap_file.swp'
+
 # -- HX OBJECT LOADING ---------------------------------------------------------
 def hx_load():
     try:
@@ -28,7 +32,6 @@ def hx_load():
         hx = HX711(dout_pin=21, pd_sck_pin=20, gain_channel_A=64)
         # Check if we have swap file. If yes that suggest that the program was not
         # terminated proprly (power failure). We load the latest state.
-        swap_file_name = 'swap_file.swp'
         if os.path.isfile(swap_file_name):
             with open(swap_file_name, 'rb') as swap_file:
                 # now we loaded the state before the Pi restarted.
