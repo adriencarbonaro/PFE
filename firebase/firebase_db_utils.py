@@ -27,10 +27,13 @@ def add_weight(id_card, timestamp_weight, value):
         "value": value
     })
 
-def get_weights():
+def get_weights(sort="id_weight"):
     weights_db = db.reference("/weights")
+    if (sort == "id_weight"):
+        weights_t = weights_db.order_by_child('id_weight').get()
+    elif (sort == "timestamp_weight"):
+        weights_t = weights_db.order_by_child('timestamp_weight').get()
+    elif (sort == "value"):
+        weights_t = weights_db.order_by_child('value').get()
 
-    weights_t = weights_db.get()
-
-    for i in weights_t:
-        print(weights_t[i])
+    return weights_t
