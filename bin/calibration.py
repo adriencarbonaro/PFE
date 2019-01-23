@@ -16,9 +16,9 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
 
 
-# -- VARIABLES -----------------------------------------------------------------
+# -- CONSTANTS -----------------------------------------------------------------
 
-swap_file_name = 'swap_file.swp'
+swap_file_name = '/home/pi/PFE/swap_file.swp'
 
 
 # -- FUNCTIONS -----------------------------------------------------------------
