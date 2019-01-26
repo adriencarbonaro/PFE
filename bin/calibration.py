@@ -44,15 +44,17 @@ def calibrate():
     # print("zero value : " + str(hx.get_data_mean(10)))
 
     # Calibrate using a known 50g weight.
-    input('Put calibrating weight (60g) on the scale the press Enter')
-    weight_60grams = hx.get_data_mean(10)
-    print("60g value  : " + str(weight_60grams))
-    hx.set_scale_ratio(scale_ratio=weight_60grams / 60.0)
+    input('Put calibrating weight (known weight) on the scale the press Enter')
+    known_weight_value = input('What is the weight on the scale ?')
+    known_weight_grams = hx.get_data_mean(10)
+    print("value  : " + str(known_weight_grams))
+    hx.set_scale_ratio(scale_ratio=known_weight_grams / float(known_weight_value))
     
     # This is how you can save the ratio and offset in order to load it later.
     # If Raspberry Pi unexpectedly powers down, load the settings.
     # print('Saving the HX711 state to swap file on persistant memory')
     with open(swap_file_name, 'wb') as swap_file:
+        print('Saving the HX711 state to swap file on persistant memory')
         pickle.dump(hx, swap_file)
         swap_file.flush()
         os.fsync(swap_file.fileno())
