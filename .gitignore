@@ -2,6 +2,6 @@ HX711/
 .gitmodules
 
 Ehpad.sql
-swap_file.swp
+swap_file*.swp
 
 __pycache__
