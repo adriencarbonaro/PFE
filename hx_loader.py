@@ -33,7 +33,7 @@ def hx_load(dout_pin, pd_sck_pin, swap_file_name):
                 # now we loaded the state before the Pi restarted.
                 hx = pickle.load(swap_file)
         else:
-            hx = calibrate()
+            hx = calibrate(hx, swap_file_name)
 
         return hx
 
@@ -44,4 +44,4 @@ def hx_load(dout_pin, pd_sck_pin, swap_file_name):
         print("\nhx_loader: Runtime Error during execution")
 
     except Exception as e:
-        print("\nhx_loader: Other exception: " + e)
+        print("\nhx_loader: Other exception: " + str(e))
