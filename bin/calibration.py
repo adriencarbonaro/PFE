@@ -15,32 +15,30 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
 
-
-# -- CONSTANTS -----------------------------------------------------------------
-
-swap_file_name = '/home/pi/PFE/swap_file.swp'
-
-
 # -- FUNCTIONS -----------------------------------------------------------------
 
-def calibrate():
+def calibrate(hx, swap_file_name):
     # Create an object hx which represents your real hx711 chip
     # Required input parameters are only 'dout_pin' and 'pd_sck_pin'
     # If you do not pass any argument 'gain_channel_A' then the default value is 128
     # If you do not pass any argument 'set_channel' then the default value is 'A'
     # you can set a gain for channel A even though you want to currently select channel B
-    GPIO.setmode(GPIO.BCM)
-    hx = HX711(dout_pin=21, pd_sck_pin=20, gain_channel_A=64)
+    # GPIO.setmode(GPIO.BCM)
+    # hx  = HX711(dout_pin=21, pd_sck_pin=20, gain_channel_A=64)
+    # hx2 = HX711(dout_pin=10, pd_sck_pin=9,  gain_channel_A=64)
     cpt = 0
-    result = hx.reset()         # Before we start, reset the hx711
 
-    if not result:
+    result  = hx.reset()         # Before we start, reset the hx711
+    # result2 = hx2.reset()        # Before we start, reset the hx711
+
+    if not (result):
         print('Ready to use')
     else:
         print('not ready')
 
     # Measure tare and save the value as offset for current channel and gain selected.
-    result = hx.zero(readings=10)
+    result  = hx.zero(readings=10)
+    # result2 = hx2.zero(readings=10)
     # print("zero value : " + str(hx.get_data_mean(10)))
 
     # Calibrate using a known 50g weight.
@@ -64,5 +62,9 @@ def calibrate():
     return hx
 
 if __name__ == '__main__':
-    calibrate()
+    GPIO.setmode(GPIO.BCM)
+    hx1 = HX711(dout_pin=21, pd_sck_pin=20, gain_channel_A=64)
+    hx2 = HX711(dout_pin=10, pd_sck_pin=9,  gain_channel_A=64)
+    calibrate(hx1, "/home/pi/PFE/swap_file_1.swp")
+    calibrate(hx2, "/home/pi/PFE/swap_file_2.swp")
 
