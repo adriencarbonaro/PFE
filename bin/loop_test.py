@@ -21,17 +21,23 @@ from HX711.HX711_Python3.hx711 import HX711    # import the class HX711
 
 # -- HX OBJECT LOADING ---------------------------------------------------------
 try:
-    hx = hx_load()
+    hx1 = hx_load(21, 20, "/home/pi/PFE/swap_file_1.swp")
+    hx2 = hx_load(10, 9,  "/home/pi/PFE/swap_file_2.swp")
 
 # -- MAIN EXECUTION ------------------------------------------------------------
 
     GPIO.setmode(GPIO.BCM)
     while(1):
-        val = hx.get_weight_mean(10)
-        if (val < 0):
-            val = 0
+        val1 = hx1.get_weight_mean(10)
+        val2 = hx2.get_weight_mean(10)
+        if (val1 < 0):
+            val1 = 0
+        if (val2 < 0):
+            val2 = 0
 
-        print(str(val) + " g")
+        print("val1: " + str(val1) + " g")
+        print("val2: " + str(val2) + " g")
+        print()
         sleep(1)
 
 except (KeyboardInterrupt, SystemExit):
@@ -41,7 +47,7 @@ except (RuntimeError):
     print("\ntest: Runtime Error during execution")
 
 except Exception as e:
-    print("\ntest: Other exception: " + e)
+    print("\ntest: Other exception: " + str(e))
 
 finally:
     GPIO.cleanup()
