@@ -24,12 +24,9 @@ def calibrate(hx, swap_file_name):
     # If you do not pass any argument 'set_channel' then the default value is 'A'
     # you can set a gain for channel A even though you want to currently select channel B
     # GPIO.setmode(GPIO.BCM)
-    # hx  = HX711(dout_pin=21, pd_sck_pin=20, gain_channel_A=64)
-    # hx2 = HX711(dout_pin=10, pd_sck_pin=9,  gain_channel_A=64)
     cpt = 0
 
     result  = hx.reset()         # Before we start, reset the hx711
-    # result2 = hx2.reset()        # Before we start, reset the hx711
 
     if not (result):
         print('Ready to use')

@@ -36,8 +36,9 @@ def firebase_connect():
 ##
 # @brief        Send a Notification.
 #
-# @param title  The notification headline.
-# @param body   The notification message.
+# @param title          The notification headline.
+# @param body           The notification message.
+# @param notif_color    The notification color on the phone.
 def send_notification(notif_title='default_title', notif_body='default_body', notif_color='#00FFFF'):
     # See documentation on defining a message payload.
     message = messaging.Message(
@@ -47,26 +48,6 @@ def send_notification(notif_title='default_title', notif_body='default_body', no
                 body=notif_body,
                 color=notif_color,
                 # click_action="OPEN_ACTIVITY_1"
-            ),
-        ),
-        token=registration_token
-    )
-    response = messaging.send(message)
-    print('Successfully sent message:', response)
-
-##
-# @brief        Send a Notification with a custom icon color.
-#
-# @param title  The notification headline.
-# @param body   The notification message.
-def send_notification_color(notif_title='default_title', notif_body='default_body', notif_color="#FF0000"):
-    message = messaging.Message(
-        android=messaging.AndroidConfig(
-            notification=messaging.AndroidNotification(
-                title=notif_title,
-                body=notif_body,
-                color=notif_color,
-                click_action="OPEN_ACTIVITY_1"
             ),
         ),
         token=registration_token

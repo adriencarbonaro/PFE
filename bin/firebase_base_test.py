@@ -13,7 +13,6 @@ sys.path.append("/home/pi/PFE/")
 
 from   firebase.firebase_utils   import firebase_connect
 from   firebase.firebase_utils   import send_notification
-from   firebase.firebase_utils   import send_notification_color
 from   firebase.firebase_db_utils import add_weight
 from   firebase.firebase_db_utils import get_weights
 
