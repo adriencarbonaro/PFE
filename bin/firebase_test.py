@@ -7,7 +7,7 @@ import  os
 import  decimal
 import  RPi.GPIO    as     GPIO     # import GPIO
 from    time        import sleep
-from    datetime    import datetime
+from    datetime    import date
 
 # Add current directory to $PYTHONPATH
 # os.path.abspath(__file__) = ~/PFE/example_calibration.py
@@ -46,11 +46,8 @@ try:
     print(str(round_val / 1000) + " kg")
 
     app = firebase_connect()
-
-    if (val < WEIGHT_LIMIT):
-        send_notification("Weight too low", str(round_val / 1000) + " kg (room " + str(ROOM_NB) + ")")
-
-    add_weight(ROOM_NB, str(datetime.now()), round_val / 1000)
+    # Add weight to database
+    add_weight(ROOM_NB, int(date.today().strftime("%Y%m%d")), new_weight)
     
 
 except (KeyboardInterrupt, SystemExit):
