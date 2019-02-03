@@ -40,12 +40,31 @@ try:
     if (val2 < 0):
         val2 = 0
     val = ( val1 + val2 ) / 2
-    round_val = decimal.Decimal(val).quantize(decimal.Decimal('.01'), rounding = decimal.ROUND_DOWN)
+    round_val = float(decimal.Decimal(val).quantize(decimal.Decimal('.01'), rounding = decimal.ROUND_DOWN))
+    new_weight = round_val / 1000
 
     print(str(round_val) + " g")
-    print(str(round_val / 1000) + " kg")
-
+    print(str(new_weight) + " kg")
+   
+    # Get weights database.
     app = firebase_connect()
+    weights_t = get_weights()
+
+    # Get last weight for room with number ROOM_NB.
+    last_id_weight = 0
+    last_weight    = 0
+    for i in weights_t:
+        if (weights_t[i]["id_card"] == ROOM_NB and weights_t[i]["id_weight"] > last_id_weight):
+            last_id_weight = weights_t[i]["id_weight"]
+            last_weight    = weights_t[i]["value"]
+
+    # Check difference with previous weight.
+    # Send notification if difference is above limit.
+    if (abs(new_weight - last_weight) > WEIGHT_DIFF_LIMIT):
+        send_notification("Large weight difference", str(new_weight) + " kg (room " + str(ROOM_NB) + ")")
+    else:
+        print(abs(new_weight - last_weight))
+
     # Add weight to database
     add_weight(ROOM_NB, int(date.today().strftime("%Y%m%d")), new_weight)
     

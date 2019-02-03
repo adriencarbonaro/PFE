@@ -39,12 +39,12 @@ def calibrate(hx, swap_file_name):
     # Measure tare and save the value as offset for current channel and gain selected.
     result  = hx.zero()
 
-    # Calibrate using a known 50g weight.
     input('Put calibrating weight (known weight) on the scale the press Enter')
     known_weight_value = input('What is the weight on the scale ?')
     known_weight_grams = hx.get_data_mean()
     print("value  : " + str(known_weight_grams))
-    hx.set_scale_ratio(scale_ratio=known_weight_grams / float(known_weight_value))
+    ration = known_weight_grams / float(known_weight_value)
+    hx.set_scale_ratio(ration)
     
     # This is how you can save the ratio and offset in order to load it later.
     # If Raspberry Pi unexpectedly powers down, load the settings.
