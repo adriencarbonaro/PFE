@@ -21,8 +21,8 @@ from firebase.firebase_db_utils import get_weights
 from firebase.firebase_db_utils import add_weight
 
 # -- CONSTANTS -----------------------------------------------------------------
-ROOM_NB      = 0
-WEIGHT_LIMIT = 3000.0
+ROOM_NB           = 0
+WEIGHT_DIFF_LIMIT = 2.0
 
 # -- HX OBJECT LOADING ---------------------------------------------------------
 try:
