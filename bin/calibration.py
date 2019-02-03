@@ -62,7 +62,7 @@ def calibrate(hx, swap_file_name):
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     hx1 = HX711(dout_pin=21, pd_sck_pin=20, gain_channel_A=64)
-    hx2 = HX711(dout_pin=10, pd_sck_pin=9,  gain_channel_A=64)
+    hx2 = HX711(dout_pin=11, pd_sck_pin=10, gain_channel_A=64)
     calibrate(hx1, "/home/pi/PFE/swap_file_1.swp")
     calibrate(hx2, "/home/pi/PFE/swap_file_2.swp")
 
