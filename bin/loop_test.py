@@ -28,8 +28,8 @@ try:
 
     GPIO.setmode(GPIO.BCM)
     while(1):
-        val1 = hx1.get_weight_mean(10)
-        val2 = hx2.get_weight_mean(10)
+        val1 = hx1.get_weight_mean()
+        val2 = hx2.get_weight_mean()
         if (val1 < 0):
             val1 = 0
         if (val2 < 0):

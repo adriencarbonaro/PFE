@@ -37,14 +37,12 @@ def calibrate(hx, swap_file_name):
         print('not ready')
 
     # Measure tare and save the value as offset for current channel and gain selected.
-    result  = hx.zero(readings=10)
-    # result2 = hx2.zero(readings=10)
-    # print("zero value : " + str(hx.get_data_mean(10)))
+    result  = hx.zero()
 
     # Calibrate using a known 50g weight.
     input('Put calibrating weight (known weight) on the scale the press Enter')
     known_weight_value = input('What is the weight on the scale ?')
-    known_weight_grams = hx.get_data_mean(10)
+    known_weight_grams = hx.get_data_mean()
     print("value  : " + str(known_weight_grams))
     hx.set_scale_ratio(scale_ratio=known_weight_grams / float(known_weight_value))
     
