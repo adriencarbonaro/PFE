@@ -25,7 +25,7 @@ def hx_load(dout_pin, pd_sck_pin, swap_file_name):
         # If you do not pass any argument 'set_channel' then the default value is 'A'
         # you can set a gain for channel A even though you want to currently select channel B
         GPIO.setmode(GPIO.BCM)
-        hx = HX711(dout_pin, pd_sck_pin, gain_channel_A=64)
+        hx = HX711(dout_pin, pd_sck_pin, gain_channel_A=128)
         # Check if we have swap file. If yes that suggest that the program was not
         # terminated proprly (power failure). We load the latest state.
         if os.path.isfile(swap_file_name):
