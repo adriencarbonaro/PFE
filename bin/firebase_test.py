@@ -23,6 +23,7 @@ from firebase.firebase_db_utils import add_weight
 # -- CONSTANTS -----------------------------------------------------------------
 ROOM_NB           = 0
 WEIGHT_DIFF_LIMIT = 2.0
+LED_PIN           = 26
 
 # -- HX OBJECT LOADING ---------------------------------------------------------
 try:
@@ -32,9 +33,11 @@ try:
 # -- MAIN EXECUTION ------------------------------------------------------------
 
     GPIO.setmode(GPIO.BCM)
-
-    val1  = hx1.get_weight_mean(10)
-    val2  = hx2.get_weight_mean(10)
+    GPIO.setup(LED_PIN, GPIO.OUT)
+    GPIO.output(LED_PIN, True)
+    val1  = hx1.get_weight_mean()
+    val2  = hx2.get_weight_mean()
+    GPIO.output(LED_PIN, False)
     if (val1 < 0):
         val1 = 0
     if (val2 < 0):
