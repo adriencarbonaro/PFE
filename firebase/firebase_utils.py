@@ -16,7 +16,7 @@ DB_OPTIONS_FILE = "/home/pi/PFE/firebase/firebase_db_options.json"
 # -- API TOKENS ----------------------------------------------------------------
 
 # This registration token comes from the client FCM SDKs.
-registration_token = 'fqDqjh8MnLw:APA91bGQ-PVtnRPGij6PaHGq6BCq_F6Tq9C8mZJVzfiUpdp9ezmdIJNvjXu2raZ0Uqq7agScuo9K7AAq7VQeufhvrWLWegJXRF-inMIImAzZtz9wHeaZVtdLGKF52_ZqaFsX0Mbh2tyl'
+registration_token = 'fHl7ucWN6ls:APA91bFNufuUATOoAJItaFeogKTyemQmebFxXNP6JLFVYhQiisChtJAs_YB7PESSP11jOuC5_hye7AZucw7-aFmuOiRFmmImOb8VayGh9Fjyj6FGY-J_MdZfYgAwX-Yf5opnzcTsNPDK'
 # registration_token = 'fqtRUhSOqUI:APA91bGSfdTkXsmiPlE1EGS99jLJZSj-IZMWrAX7oe4V3eCsjUZOwE0LryToG5-bqU2ECB7RUqL17xU_EwjhypvTE1Or679wzMG8W32EPqNB56SO0GpO7P4ABfdczTngxzkrFyi5BqIn'
 
 # -- API FUNCTIONS -------------------------------------------------------------
