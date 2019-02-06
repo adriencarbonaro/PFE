@@ -40,8 +40,8 @@ def calibrate(hx, swap_file_name):
     known_weight_value = input('What is the weight on the scale ?')
     known_weight_grams = hx.get_data_mean()
     print("value  : " + str(known_weight_grams))
-    ration = known_weight_grams / float(known_weight_value)
-    hx.set_scale_ratio(ration)
+    ratio = known_weight_grams / float(known_weight_value)
+    hx.set_scale_ratio(ratio)
     
     # This is how you can save the ratio and offset in order to load it later.
     # If Raspberry Pi unexpectedly powers down, load the settings.
